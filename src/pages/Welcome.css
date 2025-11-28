@@ -12,8 +12,8 @@
 /* ---- BUNNY IMAGE ---- */
 .bunny-img {
   width: 260px;
-  margin-top: -40px;           /* ⬅ moves bunny UP (fix big top gap) */
-  margin-bottom: -28px;         /* gap between bunny & text */
+  margin-top: 0px;           /* ⬅ moves bunny UP (fix big top gap) */
+  margin-bottom: 0px;         /* gap between bunny & text */
 
   animation: float 3s ease-in-out infinite;
 }
