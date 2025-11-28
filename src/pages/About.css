@@ -1,0 +1,76 @@
+.about-container {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #0a0a0a, #1a002b);
+  color: white;
+  text-align: center;
+  padding: 40px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Girl Image ABOVE Title */
+.about-girl {
+  width: 180px;
+  margin-bottom: -50px;   /* small gap */
+}
+
+/* Heading */
+.about-title {
+  font-size: 2.5rem;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+/* Paragraph */
+.about-text {
+  font-size: 1.2rem;
+  width: 60%;
+  line-height: 1.6;
+  margin-bottom: 40px;
+}
+
+/* Bunny close to button */
+.about-bunny {
+  width: 100px;
+  margin-bottom: -66px;  /* moves bunny closer to button */
+  margin-top: -30px;     /* reduces large white gap */
+}
+
+/* Button */
+.portfolio-btn {
+  margin-top: 5px;
+  background: rgba(255, 255, 255, 0.2);
+  border: none;
+  padding: 12px 28px;
+  border-radius: 10px;
+  color: white;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.portfolio-btn:hover {
+  transform: translateY(-5px);
+  background: rgba(255, 255, 255, 0.35);
+}
+
+/* MOBILE */
+@media (max-width: 768px) {
+  .about-text {
+    width: 90%;
+    font-size: 1rem;
+  }
+
+  .about-girl {
+    width: 150px;
+  }
+
+  .about-bunny {
+    width: 100px;
+  }
+
+  .about-title {
+    font-size: 2rem;
+  }
+}

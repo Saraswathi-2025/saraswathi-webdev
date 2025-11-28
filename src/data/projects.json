@@ -1,0 +1,19 @@
+{
+  "projects": [
+    {
+      "title": "Portfolio Website",
+      "description": "A modern React portfolio website showcasing my skills.",
+      "link": "https://saraswathi-2025.github.io/MyPortfolio/"
+    },
+    {
+      "title": "Music Player",
+      "description": "A simple custom music player using JavaScript.",
+      "link": "https://saraswathi-2025.github.io/Music-Player/"
+    },
+    {
+      "title": "Student Registration System",
+      "description": "A student data entry system built using HTML, CSS, and JS.",
+      "link": "https://saraswathi-2025.github.io/SMCEC/"
+    }
+  ]
+}
