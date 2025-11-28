@@ -1,44 +1,42 @@
+/* Exit.css - goodbye screen */
+
 .exit-page {
-  height: 100vh;
-  background: linear-gradient(135deg, #0a0a0a, #1a002b);
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
-  color: white;
+  justify-content: center;
+  padding: 40px 20px;
   text-align: center;
+  background: linear-gradient(135deg, #0a0a0a, #1a002b);
+  color: #fff;
 }
 
+/* waving bunny large */
 .exit-img {
-  width: 240px;
-  animation: wave 3s ease-in-out infinite;
+  width: 50%;
+  max-width: 520px;
+  min-width: 180px;
+  height: auto;
+  margin-bottom: 26px;
+  animation: wave 2.2s linear infinite;
+  transform-origin: center bottom;
 }
 
+/* quick small 'wave' scale/rotate for friendly motion */
 @keyframes wave {
-  0% { transform: rotate(0deg); }
-  50% { transform: rotate(3deg); }
-  100% { transform: rotate(0deg); }
+  0%   { transform: translateY(0) rotate(0deg); }
+  25%  { transform: translateY(-6px) rotate(-1deg); }
+  50%  { transform: translateY(0) rotate(0deg); }
+  75%  { transform: translateY(-6px) rotate(1deg); }
+  100% { transform: translateY(0) rotate(0deg); }
 }
 
-.exit-title {
-  margin-top: 20px;
-  font-size: 2rem;
-  font-weight: bold;
-  color: #d8baff;
-}
+.exit-title { font-size: 2.2rem; margin-bottom: 8px; font-weight: 700; }
+.exit-sub { color: rgba(255,255,255,0.9); margin-bottom: 18px; }
 
-.exit-btn {
-  margin-top: 30px;
-  padding: 10px 26px;
-  background: #b47fff;
-  border-radius: 10px;
-  font-size: 1rem;
-  color: white;
-  text-decoration: none;
-  transition: 0.3s ease;
-}
-
-.exit-btn:hover {
-  transform: translateY(-4px);
-  box-shadow: 0px 6px 16px rgba(255,255,255,0.2);
+/* responsive */
+@media (max-width: 600px) {
+  .exit-img { width: 72%; max-width: 320px; }
+  .exit-title { font-size: 1.5rem; }
 }

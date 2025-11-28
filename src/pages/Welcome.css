@@ -1,61 +1,74 @@
-/* ---- MAIN PAGE ---- */
+/* Welcome.css - hero / intro page */
+
 .welcome-page {
-  height: 100vh;
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  background: linear-gradient(135deg, #0a0a0a, #1a002b);
+  justify-content: center;    /* vertical center */
+  align-items: center;        /* horizontal center */
+  background: linear-gradient(135deg, #0a0a0a 0%, #1a002b 100%);
+  color: #fff;
   text-align: center;
+  padding: 40px 20px;
+  box-sizing: border-box;
 }
 
-/* ---- BUNNY IMAGE ---- */
-.bunny-img {
-  width: 230px;
-  animation: float 2.5s ease-in-out infinite;
+/* image: bunny / hero */
+.welcome-img {
+  width: 60%;                /* responsive base size */
+  max-width: 420px;         /* never larger than this on big screens */
+  min-width: 160px;         /* don't get too tiny on small screens */
+  height: auto;
+  display: block;
+  margin: 0 auto 18px auto;
+  will-change: transform;
+  animation: float 3.6s ease-in-out infinite;
 }
 
+/* float animation (slow up/down) */
 @keyframes float {
-  0% { transform: translateY(0); }
-  50% { transform: translateY(-8px); }
-  100% { transform: translateY(0); }
+  0%   { transform: translateY(0px) }
+  50%  { transform: translateY(-10px) }
+  100% { transform: translateY(0px) }
 }
 
-.welcome-text {
-  font-size: 1.8rem;
-  font-weight: bold;
-  color: white;
-  margin-top: 20px;
-  margin-bottom: 40px;
+/* headline + subtitle */
+.welcome-title {
+  font-size: 2.6rem;
+  margin: 10px 0 8px;
+  font-weight: 700;
+  line-height: 1.05;
 }
 
-/* ---- BUTTONS ---- */
-.button-row {
+.welcome-subtitle {
+  font-size: 1.05rem;
+  margin-bottom: 22px;
+  color: rgba(255,255,255,0.9);
+  max-width: 900px;
+}
+
+/* buttons row */
+.welcome-buttons {
   display: flex;
-  gap: 40px;
+  gap: 18px;
+  justify-content: center;
 }
 
 .btn {
-  padding: 10px 26px;
+  padding: 10px 22px;
   border-radius: 10px;
-  font-size: 1rem;
-  cursor: pointer;
   border: none;
-  transition: 0.25s ease;
+  cursor: pointer;
+  font-weight: 600;
+  transition: transform .18s ease, box-shadow .18s ease;
 }
 
-.yes {
-  background: #b47fff;
-  color: white;
-}
+.btn:hover { transform: translateY(-4px); box-shadow: 0 10px 20px rgba(0,0,0,0.25); }
 
-.no {
-  background: #2e0147;
-  color: #e5d4ff;
-  border: 1px solid #b47fff;
-}
-
-.btn:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 6px 18px rgba(255, 255, 255, 0.2);
+/* adjust for small screens */
+@media (max-width: 480px) {
+  .welcome-title { font-size: 1.7rem; }
+  .welcome-img { width: 72%; max-width: 300px; min-width: 140px; }
+  .welcome-subtitle { font-size: 0.95rem; padding: 0 10px; }
+  .btn { padding: 8px 14px; font-size: 0.9rem; }
 }
