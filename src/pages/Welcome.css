@@ -3,8 +3,8 @@
   height: 100vh;
   display: flex;
   flex-direction: column;
-  justify-content: center;     /* centers vertically */
-  align-items: center;         /* centers horizontally */
+  justify-content: center;
+  align-items: center;
   background: linear-gradient(135deg, #0a0a0a, #1a002b);
   text-align: center;
 }
@@ -12,16 +12,27 @@
 /* ---- BUNNY IMAGE ---- */
 .bunny-img {
   width: 260px;
-  margin-top: -40px;           /* ⬅ moves bunny UP (fix big top gap) */
-  margin-bottom: 15px;         /* gap between bunny & text */
-
-  animation: float 3s ease-in-out infinite;
+  margin-top: -90px;
+  margin-bottom: -25px;
+  animation: float 3s ease-in-out infinite,  /* existing float */
+             wave 2.5s ease-in-out infinite; /* NEW waving */
 }
 
+/* FLOAT (already in your code) */
 @keyframes float {
   0%   { transform: translateY(0px); }
   50%  { transform: translateY(-8px); }
   100% { transform: translateY(0px); }
+}
+
+/* 🌟 NEW — WAVE ANIMATION */
+@keyframes wave {
+  0%   { transform: rotate(0deg); }
+  20%  { transform: rotate(6deg); }
+  40%  { transform: rotate(-6deg); }
+  60%  { transform: rotate(6deg); }
+  80%  { transform: rotate(-3deg); }
+  100% { transform: rotate(0deg); }
 }
 
 /* ---- TEXT ---- */
@@ -29,13 +40,13 @@
   font-size: 1.8rem;
   font-weight: bold;
   color: white;
-  margin-bottom: 25px;         /* gap between text and buttons */
+  margin-bottom: 25px;
 }
 
 /* ---- BUTTON ROW ---- */
 .button-row {
   display: flex;
-  gap: 25px;                   /* space between YES / NO buttons */
+  gap: 25px;
 }
 
 /* ---- BUTTON STYLE ---- */
@@ -61,7 +72,7 @@
   border: 1px solid #b47fff;
 }
 
-/* ---- HOVER EFFECT (smooth lift-up) ---- */
+/* ---- HOVER EFFECT ---- */
 .btn:hover {
   transform: translateY(-4px);
   box-shadow: 0 6px 18px rgba(255, 255, 255, 0.2);
