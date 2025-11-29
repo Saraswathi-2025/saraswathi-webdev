@@ -13,7 +13,7 @@
 /* ---- Bunny Image ---- */
 .exit-bunny {
   width: 290px;
-  margin-top: 15px;          /* reduce gap above */
+  margin-top: 0px;          /* reduce gap above */
   margin-bottom: -80px;         /* reduce gap before text */
   animation: float 3s ease-in-out infinite,
              wave 2.5s ease-in-out infinite;
