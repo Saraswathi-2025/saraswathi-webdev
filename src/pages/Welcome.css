@@ -11,9 +11,9 @@
 
 /* ---- BUNNY IMAGE ---- */
 .bunny-img {
-  width: 250px;
+  width: 500px;
   margin-top: 10px;
-  margin-bottom: -80px;
+  margin-bottom: -200px;
   animation: float 3s ease-in-out infinite,  /* existing float */
              wave 2.5s ease-in-out infinite; /* NEW waving */
 }
