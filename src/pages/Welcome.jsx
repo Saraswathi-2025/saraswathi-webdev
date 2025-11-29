@@ -7,9 +7,13 @@ function Welcome() {
 
   return (
     <div className="welcome-page">
-      {/* Bunny */}
-      <img src={`${process.env.PUBLIC_URL}/bunny-dev.png`} alt="bunny-img" />
 
+      {/* Bunny */}
+      <img
+        src={`${process.env.PUBLIC_URL}/bunny-dev.png`}
+        alt="bunny"
+        className="bunny-img"
+      />
 
       {/* Text */}
       <h1 className="welcome-text">Do you want to know about me?</h1>
@@ -19,6 +23,7 @@ function Welcome() {
         <button className="btn yes" onClick={() => navigate("/about")}>
           Yes
         </button>
+
         <button className="btn no" onClick={() => navigate("/exit")}>
           No
         </button>
