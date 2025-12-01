@@ -1,31 +1,47 @@
 import React from "react";
-import "../styles/Contact.css";
+import "./styles/Contact.css";
 
-function Contact() {
+const Contact = () => {
   return (
     <div className="contact-container">
-      <h1 className="contact-title">Contact</h1>
-      <p className="contact-subtext">Want to work together? Reach out.</p>
 
-      <div className="contact-details">
-        <p>
-          <strong>Email:</strong>{" "}
-          <a href="mailto:yourmail@gmail.com">yourmail@gmail.com</a>
-        </p>
+      <h1 className="contact-title">Get in Touch</h1>
 
-        <p>
-          <strong>Resume:</strong>{" "}
-          <a
-            href={`${process.env.PUBLIC_URL}/Saraswathi_ATS.pdf`}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Download
-          </a>
-        </p>
+      <p className="contact-text">
+        I’m open to collaborations, projects, and opportunities.  
+        Feel free to reach out anytime!
+      </p>
+
+      <div className="contact-links">
+
+        <a
+          href="mailto:saraswathiachari02@gmail.com"
+          className="contact-card"
+        >
+          📧 Email
+        </a>
+
+        <a
+          href="https://github.com/Saraswathi-2025"
+          target="_blank"
+          rel="noreferrer"
+          className="contact-card"
+        >
+          🐙 GitHub
+        </a>
+
+        <a
+          href="https://www.linkedin.com/in/saraswathi-achari-89b2a4304"
+          target="_blank"
+          rel="noreferrer"
+          className="contact-card"
+        >
+          🔗 LinkedIn
+        </a>
+
       </div>
     </div>
   );
-}
+};
 
 export default Contact;

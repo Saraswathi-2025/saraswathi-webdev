@@ -1,5 +1,5 @@
 import React from "react";
-import "../styles/Home.css";
+import "./styles/Home.css";
 
 function Home() {
   return (
@@ -11,11 +11,13 @@ function Home() {
           Hi, I'm <span>Saraswathi</span>
         </h1>
 
-        <h2 className="role">Frontend Web Developer</h2>
+        <h2 className="role">Aspiring Frontend Web Developer</h2>
 
         <p className="description">
-          I build clean, modern and responsive web applications.
-          Passionate about UI/UX, performance, and turning ideas into working products.
+          I’m a motivated learner who is passionate about building clean,
+          modern, and user-friendly web interfaces.  
+          Currently improving my skills in HTML, CSS, JavaScript, and React —
+          and working every day to become a professional web developer.
         </p>
 
         <div className="buttons">
