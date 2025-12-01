@@ -1,59 +1,73 @@
-.skills-container {
+/* Skills Page Styles */
+
+.skills-page {
   min-height: 100vh;
-  padding: 80px 20px;
-  background: linear-gradient(135deg, #0a0a0a, #1a002b);
-  color: white;
+  padding: 40px 20px;
+  background: linear-gradient(180deg, #121227, #0f1020);
+  color: #fff;
   text-align: center;
+  font-family: Inter, "Segoe UI", system-ui;
 }
 
 .skills-title {
-  font-size: 2.8rem;
-  margin-bottom: 40px;
-  color: #c8a2ff;
+  font-size: 36px;
+  margin-bottom: 30px;
+  color: #ffffff;
+  letter-spacing: 1px;
 }
 
-.skills-list {
-  display: flex;
-  justify-content: center;
-  gap: 40px;
-  flex-wrap: wrap;
-  max-width: 1000px;
-  margin: auto;
+/* GRID */
+.skills-container {
+  max-width: 900px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 26px;
 }
 
-.skill-category {
-  background: rgba(255, 255, 255, 0.05);
-  padding: 25px;
-  width: 260px;
-  border-radius: 12px;
+/* BOX */
+.skill-box {
+  padding: 26px;
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.04);
+  border-radius: 18px;
   backdrop-filter: blur(4px);
-  box-shadow: 0 0 15px rgba(255, 255, 255, 0.08);
+  transition: 0.25s ease;
 }
 
-.skill-category h2 {
-  font-size: 1.4rem;
-  margin-bottom: 15px;
-  color: #b47fff;
+/* Title inside box */
+.skill-box h3 {
+  margin-bottom: 14px;
+  font-size: 18px;
+  font-weight: 700;
+  background: linear-gradient(90deg,#6b5cff,#7df0d9);
+  /*-webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;*/
 }
 
-.skill-category ul {
-  list-style: none;
-  padding: 0;
+/* Skill items */
+.skill-box p {
+  color: rgba(255,255,255,0.7);
+  font-size: 14px;
+  margin: 4px 0;
 }
 
-.skill-category li {
-  margin: 8px 0;
-  font-size: 1rem;
-  opacity: 0.9;
+/* ---------------- HOVER EFFECT ---------------- */
+.skill-box:hover {
+  transform: translateY(-8px);
+  background: rgba(255,255,255,0.06);
+  border-color: rgba(125,240,217,0.3);
+  box-shadow: 0 8px 22px rgba(0,0,0,0.4);
 }
 
-/* 📱 Mobile */
-@media (max-width: 768px) {
-  .skills-title {
-    font-size: 2.2rem;
+/* ---------------- MOBILE FIX ---------------- */
+@media (max-width: 900px) {
+  .skills-container {
+    grid-template-columns: 1fr;
+    gap: 20px;
   }
-
-  .skill-category {
-    width: 85%;
-  }
+}
+.skills-title {
+  position: relative;
+  z-index: 2000;   /* brings heading above boxes */
 }

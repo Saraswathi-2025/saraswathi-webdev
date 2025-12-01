@@ -1,36 +1,66 @@
-.contact-container {
+/* Full page center */
+.contact-page {
   min-height: 100vh;
-  background: linear-gradient(135deg, #0a0a0a, #1a002b);
-  padding: 120px 20px 40px;
-  color: white;
+  background: linear-gradient(180deg, #141428, #0f1020);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+/* Glass card */
+.contact-card {
+  width: 380px;
+  padding: 35px 28px;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 18px;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  backdrop-filter: blur(4px);
   text-align: center;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.3);
 }
 
+/* Title */
 .contact-title {
-  font-size: 2.8rem;
-  font-weight: bold;
-  color: #d2b8ff;
-  margin-bottom: 10px;
+  font-size: 32px;
+  margin-bottom: 12px;
+  background: linear-gradient(90deg, #6b5cff, #7df0d9);
+  /*-webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;*/
 }
 
-.contact-subtext {
-  font-size: 1.2rem;
-  opacity: 0.8;
-  margin-bottom: 40px;
+/* Sub text */
+.contact-sub {
+  font-size: 14px;
+  color: rgba(255,255,255,0.7);
+  margin-bottom: 28px;
 }
 
-.contact-details {
-  font-size: 1.1rem;
-  line-height: 2;
+/* Buttons container */
+.contact-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
 }
 
-.contact-details a {
-  color: #b47fff;
+/* Buttons */
+.contact-btn {
+  padding: 12px 14px;
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.07);
+  border-radius: 10px;
   text-decoration: none;
-  font-weight: 500;
+  color: #fff;
+  font-size: 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: 0.2s ease;
 }
 
-.contact-details a:hover {
-  text-decoration: underline;
-  color: #d8c3ff;
+/* Hover effect */
+.contact-btn:hover {
+  background: rgba(255,255,255,0.15);
+  transform: translateY(-4px);
+  border-color: rgba(125,240,217,0.3);
 }

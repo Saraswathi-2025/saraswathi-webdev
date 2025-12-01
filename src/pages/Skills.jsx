@@ -1,44 +1,41 @@
 import React from "react";
 import "./styles/Skills.css";
 
-function Skills() {
+export default function Skills() {
   return (
-    <div className="skills-container">
+    <div className="skills-page">
       <h1 className="skills-title">Skills</h1>
 
-      <div className="skills-list">
-        <div className="skill-category">
-          <h2>Frontend</h2>
-          <ul>
-            <li>HTML / CSS</li>
-            <li>JavaScript (ES6+)</li>
-            <li>React.js</li>
-            <li>Responsive Design</li>
-          </ul>
+      <div className="skills-container">
+
+        {/* Frontend */}
+        <div className="skill-box">
+          <h3>Frontend</h3>
+          <p>HTML / CSS</p>
+          <p>JavaScript (ES6+)</p>
+          <p>React JS</p>
+          <p>Responsive Design</p>
         </div>
 
-        <div className="skill-category">
-          <h2>Tools & Libraries</h2>
-          <ul>
-            <li>Git & GitHub</li>
-            <li>Figma (UI/UX)</li>
-            <li>VS Code</li>
-            <li>React Router</li>
-          </ul>
+        {/* Tools */}
+        <div className="skill-box">
+          <h3>Tools & Libraries</h3>
+          <p>Git / GitHub</p>
+          <p>Figma (UI/UX)</p>
+          <p>VS Code</p>
+          <p>React Router</p>
         </div>
 
-        <div className="skill-category">
-          <h2>Soft Skills</h2>
-          <ul>
-            <li>Problem Solving</li>
-            <li>Communication</li>
-            <li>Time Management</li>
-            <li>Team Collaboration</li>
-          </ul>
+        {/* Soft Skills */}
+        <div className="skill-box">
+          <h3>Soft Skills</h3>
+          <p>Problem Solving</p>
+          <p>Communication</p>
+          <p>Time Management</p>
+          <p>Team Collaboration</p>
         </div>
+
       </div>
     </div>
   );
 }
-
-export default Skills;

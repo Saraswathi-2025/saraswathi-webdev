@@ -8,7 +8,7 @@ const projectsData = [
     subtitle: "Tech used: HTML · CSS · JavaScript · React",
     description:
       "A modern portfolio website built to showcase my skills and learning journey. Responsive layout, smooth UI and clean presentation.",
-    github: "https://github.com/Saraswathi-2025/MyPortfolio", // update to your repo
+    github: " https://saraswathi-2025.github.io/MyPortfolio/",
     screenshots: [
       "/screenshots/portfolio-1.png",
       "/screenshots/portfolio-2.png",
@@ -22,8 +22,8 @@ const projectsData = [
     title: "Music Player",
     subtitle: "Tech used: JavaScript · HTML · CSS",
     description:
-      "A simple web-based music player demonstrating DOM interaction, audio APIs and playlist controls (Play / Pause / Next / Prev).",
-    github: "https://github.com/Saraswathi-2025/music-player", // update
+      "A simple web-based music player demonstrating DOM interaction, audio APIs and playlist controls.",
+    github: "https://saraswathi-2025.github.io/Music-Player/",
     screenshots: [
       "/screenshots/music-player-1.png",
       "/screenshots/music-player-2.png",
@@ -37,8 +37,8 @@ const projectsData = [
     title: "Student Registration System",
     subtitle: "Tech used: HTML · CSS · JavaScript",
     description:
-      "A small form-based system to register students, validate inputs and persist demo data (localStorage). Built for learning front-end form flows.",
-    github: "https://github.com/Saraswathi-2025/student-registration", // update
+      "A basic student registration form that validates input and stores demo data using localStorage.",
+    github: " https://saraswathi-2025.github.io/SMCEC/",
     screenshots: [
       "/screenshots/SMCMC-1.png",
       "/screenshots/SMCMC-2.png",
@@ -49,7 +49,6 @@ const projectsData = [
       "/screenshots/SMCMC-7.png",
     ],
   },
-  // add more projects as needed
 ];
 
 export default function Projects() {
@@ -60,8 +59,8 @@ export default function Projects() {
   function openProject(projectId) {
     const p = projectsData.find((x) => x.id === projectId) || projectsData[0];
     setActiveProject(p);
-    // reset lightbox index
     setLightboxIndex(0);
+    window.scrollTo({ top: 0, behavior: "smooth" }); // 🔥 mobile UX improvement
   }
 
   function openLightbox(index = 0) {
@@ -94,14 +93,15 @@ export default function Projects() {
       </header>
 
       <section className="projects-shell">
-        {/* Project list (vertical) */}
-        <nav className="projects-list" aria-label="Projects list">
+        {/* PROJECT LIST */}
+        <nav className="projects-list">
           {projectsData.map((p) => (
             <button
               key={p.id}
-              className={`project-list-item ${activeProject.id === p.id ? "active" : ""}`}
+              className={`project-list-item ${
+                activeProject.id === p.id ? "active" : ""
+              }`}
               onClick={() => openProject(p.id)}
-              aria-pressed={activeProject.id === p.id}
             >
               <div className="project-list-title">{p.title}</div>
               <div className="project-list-tech">{p.subtitle}</div>
@@ -109,42 +109,41 @@ export default function Projects() {
           ))}
         </nav>
 
-        {/* Active project preview + details */}
-        <article className="project-detail">
+        {/* PROJECT DETAIL */}
+        <article
+          className="project-detail"
+          data-project={activeProject.id}
+        >
           <div className="project-left">
-            {/* large preview - clickable */}
+            {/* clickable preview */}
             <div
               className="project-preview"
-              role="button"
-              tabIndex={0}
               onClick={() => openLightbox(0)}
-              onKeyDown={(e) => {
-                if (e.key === "Enter") openLightbox(0);
-              }}
-              aria-label={`Open screenshots for ${activeProject.title}`}
             >
               <img
                 src={process.env.PUBLIC_URL + activeProject.screenshots[0]}
-                alt={`${activeProject.title} screenshot 1`}
-                loading="lazy"
+                alt="project preview"
               />
             </div>
 
-            {/* thumbnail strip */}
-            <div className="project-thumbs" aria-hidden={false}>
+            {/* THUMBNAILS */}
+            <div className="project-thumbs">
               {activeProject.screenshots.map((src, idx) => (
                 <button
-                  key={src}
+                  key={idx}
                   className="thumb-btn"
                   onClick={() => openLightbox(idx)}
-                  aria-label={`Open screenshot ${idx + 1} for ${activeProject.title}`}
                 >
-                  <img src={process.env.PUBLIC_URL + src} alt={`${activeProject.title} thumb ${idx + 1}`} />
+                  <img
+                    src={process.env.PUBLIC_URL + src}
+                    alt="thumbnail"
+                  />
                 </button>
               ))}
             </div>
           </div>
 
+          {/* RIGHT INFO */}
           <div className="project-right">
             <h2 className="project-title">{activeProject.title}</h2>
             <p className="project-tech">{activeProject.subtitle}</p>
@@ -152,65 +151,47 @@ export default function Projects() {
 
             <div className="project-actions">
               <a
-                className="btn primary"
                 href={activeProject.github}
                 target="_blank"
                 rel="noopener noreferrer"
+                className="btn primary"
               >
                 View on GitHub →
               </a>
 
-              <button
-                className="btn outline"
-                onClick={() => openLightbox(0)}
-                aria-label={`Open screenshots for ${activeProject.title}`}
-              >
-                View screenshots
+              <button className="btn outline" onClick={() => openLightbox(0)}>
+                View Screenshots
               </button>
             </div>
 
             <div className="project-meta">
-              <small>Tip: click thumbnails or the big preview to open the screenshots viewer.</small>
+              <small>Tap preview or thumbnails to view full gallery.</small>
             </div>
           </div>
         </article>
       </section>
 
-      {/* Lightbox / modal */}
+      {/* LIGHTBOX */}
       {lightboxOpen && (
-        <div
-          className="lightbox"
-          role="dialog"
-          aria-modal="true"
-          aria-label={`${activeProject.title} screenshots viewer`}
-          onClick={closeLightbox}
-        >
-          <div
-            className="lightbox-inner"
-            onClick={(e) => e.stopPropagation()}
-            role="document"
-          >
-            <button className="lb-close" onClick={closeLightbox} aria-label="Close viewer">
-              ✕
-            </button>
-
-            <button className="lb-prev" onClick={prevScreenshot} aria-label="Previous screenshot">
-              ‹
-            </button>
+        <div className="lightbox" onClick={closeLightbox}>
+          <div className="lightbox-inner" onClick={(e) => e.stopPropagation()}>
+            <button className="lb-close" onClick={closeLightbox}>✕</button>
+            <button className="lb-prev" onClick={prevScreenshot}>‹</button>
 
             <div className="lb-image-wrap">
               <img
-                src={process.env.PUBLIC_URL + activeProject.screenshots[lightboxIndex]}
-                alt={`${activeProject.title} screenshot ${lightboxIndex + 1}`}
+                src={
+                  process.env.PUBLIC_URL +
+                  activeProject.screenshots[lightboxIndex]
+                }
+                alt="large view"
               />
               <div className="lb-counter">
                 {lightboxIndex + 1} / {activeProject.screenshots.length}
               </div>
             </div>
 
-            <button className="lb-next" onClick={nextScreenshot} aria-label="Next screenshot">
-              ›
-            </button>
+            <button className="lb-next" onClick={nextScreenshot}>›</button>
           </div>
         </div>
       )}

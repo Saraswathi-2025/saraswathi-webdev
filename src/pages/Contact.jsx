@@ -1,47 +1,40 @@
 import React from "react";
 import "./styles/Contact.css";
 
-const Contact = () => {
+export default function Contact() {
   return (
-    <div className="contact-container">
+    <div className="contact-page">
 
-      <h1 className="contact-title">Get in Touch</h1>
+      <div className="contact-card">
 
-      <p className="contact-text">
-        I’m open to collaborations, projects, and opportunities.  
-        Feel free to reach out anytime!
-      </p>
+        <h1 className="contact-title">Contact</h1>
+        <p className="contact-sub">
+          Feel free to reach out for collaborations or opportunities.
+        </p>
 
-      <div className="contact-links">
+        <div className="contact-buttons">
 
-        <a
-          href="mailto:saraswathiachari02@gmail.com"
-          className="contact-card"
-        >
-          📧 Email
-        </a>
+          <a href="mailto:saraswathi@example.com" className="contact-btn">
+            📧 Email
+          </a>
 
-        <a
-          href="https://github.com/Saraswathi-2025"
-          target="_blank"
-          rel="noreferrer"
-          className="contact-card"
-        >
-          🐙 GitHub
-        </a>
+          <a href="https://github.com/Saraswathi-2025" 
+             target="_blank" 
+             rel="noopener noreferrer" 
+             className="contact-btn">
+            🐙 GitHub
+          </a>
 
-        <a
-          href="https://www.linkedin.com/in/saraswathi-achari-89b2a4304"
-          target="_blank"
-          rel="noreferrer"
-          className="contact-card"
-        >
-          🔗 LinkedIn
-        </a>
+          <a href="https://linkedin.com" 
+             target="_blank"
+             rel="noopener noreferrer"
+             className="contact-btn">
+            🔗 LinkedIn
+          </a>
 
+        </div>
       </div>
+
     </div>
   );
-};
-
-export default Contact;
+}
