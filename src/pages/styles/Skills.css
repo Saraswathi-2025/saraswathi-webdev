@@ -25,7 +25,7 @@
   gap: 26px;
 }
 
-/* BOX */
+/* BOX 
 .skill-box {
   padding: 26px;
   background: rgba(255,255,255,0.03);
@@ -33,7 +33,7 @@
   border-radius: 18px;
   backdrop-filter: blur(4px);
   transition: 0.25s ease;
-}
+}*/
 
 /* Title inside box 
 .skill-box h3 {
