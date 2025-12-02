@@ -1,0 +1,48 @@
+{
+  "projects": [
+    {
+      "id": "portfolio",
+      "title": "Portfolio Website",
+      "subtitle": "Tech used: HTML · CSS · JavaScript · React",
+      "description": "A modern portfolio website built to showcase my skills and learning journey. Responsive layout, smooth UI and clean presentation.",
+      "github": "https://saraswathi-2025.github.io/MyPortfolio/",
+      "screenshots": [
+        "/screenshots/portfolio-1.png",
+        "/screenshots/portfolio-2.png",
+        "/screenshots/portfolio-3.png",
+        "/screenshots/portfolio-4.png",
+        "/screenshots/portfolio-5.png"
+      ]
+    },
+    {
+      "id": "music-player",
+      "title": "Music Player",
+      "subtitle": "Tech used: JavaScript · HTML · CSS",
+      "description": "A simple web-based music player demonstrating DOM interaction and playlist controls.",
+      "github": "https://saraswathi-2025.github.io/Music-Player/",
+      "screenshots": [
+        "/screenshots/music-player-1.png",
+        "/screenshots/music-player-2.png",
+        "/screenshots/music-player-3.png",
+        "/screenshots/music-player-4.png",
+        "/screenshots/music-player-5.png"
+      ]
+    },
+    {
+      "id": "student-reg",
+      "title": "Student Registration System",
+      "subtitle": "Tech used: HTML · CSS · JavaScript",
+      "description": "A basic student registration form that validates input and stores demo data using localStorage.",
+      "github": "https://saraswathi-2025.github.io/SMCEC/",
+      "screenshots": [
+        "/screenshots/SMCMC-1.png",
+        "/screenshots/SMCMC-2.png",
+        "/screenshots/SMCMC-3.png",
+        "/screenshots/SMCMC-4.png",
+        "/screenshots/SMCMC-5.png",
+        "/screenshots/SMCMC-6.png",
+        "/screenshots/SMCMC-7.png"
+      ]
+    }
+  ]
+}
