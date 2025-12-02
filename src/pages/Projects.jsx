@@ -9,7 +9,7 @@ export default function Projects() {
 
   useEffect(() => {
     async function loadProjects() {
-      const res = await fetch(process.env.PUBLIC_URL + "/project.json");
+      const res = await fetch(process.env.PUBLIC_URL + "/projects.json");
       const base = await res.json();
 
       const extra = JSON.parse(localStorage.getItem("extraProjects")) || [];
