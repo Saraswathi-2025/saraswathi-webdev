@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "/saraswathi-webdev/static/css/main.33f6c8eb.css",
-    "main.js": "/saraswathi-webdev/static/js/main.0b47ab04.js",
+    "main.js": "/saraswathi-webdev/static/js/main.da48cf77.js",
     "index.html": "/saraswathi-webdev/index.html",
     "main.33f6c8eb.css.map": "/saraswathi-webdev/static/css/main.33f6c8eb.css.map",
-    "main.0b47ab04.js.map": "/saraswathi-webdev/static/js/main.0b47ab04.js.map"
+    "main.da48cf77.js.map": "/saraswathi-webdev/static/js/main.da48cf77.js.map"
   },
   "entrypoints": [
     "static/css/main.33f6c8eb.css",
-    "static/js/main.0b47ab04.js"
+    "static/js/main.da48cf77.js"
   ]
 }
