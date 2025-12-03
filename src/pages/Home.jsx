@@ -1,41 +1,36 @@
 import React from "react";
-import "./styles/Home.css";
+import { motion } from "framer-motion";
+import "./Home.css";
 
-function Home() {
+export default function Home(){
   return (
-    <div className="home-container">
+    <section className="home container" aria-labelledby="home-title">
+      <motion.div
+        className="home-inner"
+        initial={{ opacity:0, y:12 }}
+        animate={{ opacity:1, y:0 }}
+        transition={{ duration:0.6 }}
+      >
+        <div className="home-left">
+          <h1 id="home-title" className="h1">Hi — I'm <span className="name">Saraswathi</span></h1>
+          <p className="lead">Aspiring Frontend Developer — building clean, accessible, and delightful UI.</p>
 
-      {/* LEFT — TEXT */}
-      <div className="home-text">
-        <h1 className="title">
-          Hi, I'm <span>Saraswathi</span>
-        </h1>
+          <p className="desc">
+            I specialize in responsive interfaces using HTML, CSS, JavaScript and React. I focus on clear UX, accessibility and polished micro-interactions.
+          </p>
 
-        <h2 className="role">Aspiring Frontend Web Developer</h2>
-
-        <p className="description">
-          I’m a motivated learner who is passionate about building clean,
-          modern, and user-friendly web interfaces.  
-          Currently improving my skills in HTML, CSS, JavaScript, and React —
-          and working every day to become a professional web developer.
-        </p>
-
-        <div className="buttons">
-          <a href="#/projects" className="btn primary">View Projects</a>
-          <a href="#/contact" className="btn secondary">Contact Me</a>
+          <div className="home-ctas">
+            <a className="btn btn--primary" href="#/projects">View Projects</a>
+            <a className="btn btn--ghost" href="#/contact">Contact Me</a>
+          </div>
         </div>
-      </div>
 
-      {/* RIGHT — PROFILE IMAGE */}
-      <div className="home-image">
-        <img 
-          src={`${process.env.PUBLIC_URL}/profile.png`} 
-          alt="profile"
-        />
-      </div>
-
-    </div>
+        <div className="home-right" aria-hidden="true">
+          <div className="portrait card">
+            <img src={`${process.env.PUBLIC_URL}/profile.png`} alt="Saraswathi portrait" loading="lazy" />
+          </div>
+        </div>
+      </motion.div>
+    </section>
   );
 }
-
-export default Home;

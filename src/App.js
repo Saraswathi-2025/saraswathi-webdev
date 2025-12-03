@@ -1,5 +1,6 @@
 import React from "react";
 import { HashRouter as Router, Routes, Route } from "react-router-dom";
+import { AnimatePresence } from "framer-motion";
 
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
@@ -10,23 +11,23 @@ import Skills from "./pages/Skills";
 import Contact from "./pages/Contact";
 import Admin from "./pages/Admin";
 
+import "./index.css";
+
 function App() {
   return (
     <Router>
       <Navbar />
-
-      <main className="app-main">
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/projects" element={<Projects />} />
-          <Route path="/skills" element={<Skills />} />
-          <Route path="/contact" element={<Contact />} />
-
-          {/* ⭐ NEW — Admin Login Page */}
-          <Route path="/admin" element={<Admin />} />
-        </Routes>
+      <main style={{ paddingTop: 84 }}>
+        <AnimatePresence mode="wait" initial={false}>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/projects" element={<Projects />} />
+            <Route path="/skills" element={<Skills />} />
+            <Route path="/contact" element={<Contact />} />
+            <Route path="/admin" element={<Admin />} />
+          </Routes>
+        </AnimatePresence>
       </main>
-
       <Footer />
     </Router>
   );

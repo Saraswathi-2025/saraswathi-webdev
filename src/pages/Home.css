@@ -1,0 +1,13 @@
+.home-inner{display:flex;align-items:center;gap:36px;padding:40px 0}
+.home-left{flex:1;max-width:60%}
+.home-right{width:320px;flex-shrink:0;display:flex;justify-content:center}
+.name{background:var(--accent-grad); -webkit-background-clip:text; -webkit-text-fill-color:transparent}
+.desc{color:var(--muted-2); margin:14px 0 18px; max-width:60ch}
+.home-ctas{display:flex;gap:12px}
+.portrait img{width:260px;height:260px;object-fit:cover;border-radius:12px;display:block}
+@media (max-width:900px){
+  .home-inner{flex-direction:column;text-align:center}
+  .home-left{max-width:100%}
+  .home-right{width:100%}
+  .portrait img{width:220px;height:220px;margin:8px auto 0}
+}

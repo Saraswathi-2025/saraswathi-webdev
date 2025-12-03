@@ -1,148 +1,91 @@
 import React, { useEffect, useState } from "react";
-import "./styles/Projects.css";
+import { motion } from "framer-motion";
+import "./Projects.css";
 
-export default function Projects() {
+function Thumb({ src, onClick, alt }) {
+  return (
+    <button className="thumb" onClick={onClick} aria-label={`Open ${alt}`}>
+      <img src={process.env.PUBLIC_URL + src} alt={alt} loading="lazy" />
+    </button>
+  );
+}
+
+export default function Projects(){
   const [projects, setProjects] = useState([]);
-  const [activeProject, setActiveProject] = useState(null);
-  const [lightboxOpen, setLightboxOpen] = useState(false);
-  const [lightboxIndex, setLightboxIndex] = useState(0);
+  const [activeIdx, setActiveIdx] = useState(0);
+  const [lightbox, setLightbox] = useState({ open:false, idx:0 });
 
-  // ---------------- LOAD PROJECTS ----------------
   useEffect(() => {
-    async function loadProjects() {
+    async function load(){
       const res = await fetch(process.env.PUBLIC_URL + "/projects.json");
       const base = await res.json();
-
       const extra = JSON.parse(localStorage.getItem("extraProjects")) || [];
-
       const all = [...base.projects, ...extra];
-
       setProjects(all);
-      setActiveProject(all[0]);
     }
-    loadProjects();
-  }, []);
+    load();
+  },[]);
 
-  // ---------------- OPEN PROJECT ----------------
-  function openProject(p) {
-    setActiveProject(p);
-    setLightboxIndex(0);
-    window.scrollTo({ top: 0, behavior: "smooth" });
-  }
+  const active = projects[activeIdx];
 
-  // ---------------- LIGHTBOX ----------------
-  function openLightbox(index) {
-    setLightboxIndex(index);
-    setLightboxOpen(true);
-  }
-  function closeLightbox() {
-    setLightboxOpen(false);
-  }
-
-  function nextScreenshot() {
-    setLightboxIndex((i) => (i + 1) % activeProject.screenshots.length);
-  }
-  function prevScreenshot() {
-    setLightboxIndex((i) =>
-      (i - 1 + activeProject.screenshots.length) %
-      activeProject.screenshots.length
-    );
-  }
-
-  if (!activeProject) return <div className="projects-page">Loading...</div>;
+  if (!projects.length) return <div className="container"><p className="lead">Loading projects…</p></div>;
 
   return (
-    <main className="projects-page">
-      <header className="projects-header">
-        <h1>Projects</h1>
-        <p className="projects-sub">
-          A selection of recent work — click a project to view screenshots & details.
-        </p>
+    <motion.main className="projects container" initial={{opacity:0}} animate={{opacity:1}} exit={{opacity:0}}>
+      <header className="projects-head">
+        <h2 className="h2">Projects</h2>
+        <p className="lead">Select a project to view details & screenshots.</p>
       </header>
 
-      <section className="projects-shell">
-        
-        {/* LEFT PROJECT LIST */}
-        <nav className="projects-list">
-          {projects.map((p) => (
+      <div className="projects-grid">
+        <aside className="projects-list card" aria-label="Project list">
+          {projects.map((p, i) => (
             <button
               key={p.id}
-              className={`project-list-item ${
-                activeProject.id === p.id ? "active" : ""
-              }`}
-              onClick={() => openProject(p)}
+              className={`proj-item ${i === activeIdx ? "is-active" : ""}`}
+              onClick={() => setActiveIdx(i)}
             >
-              <div className="project-list-title">{p.title}</div>
-              <div className="project-list-tech">{p.subtitle}</div>
+              <div className="proj-title">{p.title}</div>
+              <div className="proj-sub">{p.subtitle}</div>
             </button>
           ))}
-        </nav>
+        </aside>
 
-        {/* RIGHT PROJECT VIEW */}
-        <article className="project-detail" data-project={activeProject.id}>
-          <div className="project-left">
-            <div
-              className="project-preview"
-              onClick={() => openLightbox(0)}
-            >
-              <img
-                src={process.env.PUBLIC_URL + activeProject.screenshots[0]}
-                alt=""
-              />
+        <section className="proj-detail card">
+          <div className="proj-preview" onClick={() => setLightbox({ open:true, idx:0 })}>
+            <img src={process.env.PUBLIC_URL + active.screenshots[0]} alt={`${active.title} preview`} loading="lazy" />
+          </div>
+
+          <div className="proj-meta">
+            <h3 className="h2" style={{fontSize:"1.2rem"}}>{active.title}</h3>
+            <p className="lead" style={{marginBottom:12}}>{active.subtitle}</p>
+            <p style={{color:"var(--muted-2)"}}>{active.description}</p>
+
+            <div className="proj-actions" style={{marginTop:18}}>
+              <a className="btn btn--primary" href={active.github} target="_blank" rel="noreferrer">View on GitHub</a>
+              <button className="btn btn--ghost" onClick={() => setLightbox({ open:true, idx:0 })}>View Screenshots</button>
             </div>
 
-            <div className="project-thumbs">
-              {activeProject.screenshots.map((src, idx) => (
-                <button key={idx} className="thumb-btn" onClick={() => openLightbox(idx)}>
-                  <img src={process.env.PUBLIC_URL + src} alt="" />
-                </button>
+            <div className="thumbs-row">
+              {active.screenshots.map((s, idx) => (
+                <Thumb key={idx} src={s} alt={`${active.title} screenshot ${idx+1}`} onClick={() => setLightbox({ open:true, idx })} />
               ))}
             </div>
           </div>
+        </section>
+      </div>
 
-          <div className="project-right">
-            <h2 className="project-title">{activeProject.title}</h2>
-            <p className="project-tech">{activeProject.subtitle}</p>
-            <p className="project-desc">{activeProject.description}</p>
-
-            <div className="project-actions">
-              <a href={activeProject.github} target="_blank" rel="noreferrer" className="btn primary">
-                View on GitHub →
-              </a>
-
-              <button className="btn outline" onClick={() => openLightbox(0)}>
-                View Screenshots
-              </button>
-            </div>
-
-            <div className="project-meta">
-              <small>Tap preview or thumbnails to open full gallery.</small>
-            </div>
-          </div>
-        </article>
-      </section>
-
-      {/* LIGHTBOX */}
-      {lightboxOpen && (
-        <div className="lightbox" onClick={closeLightbox}>
-          <div className="lightbox-inner" onClick={(e) => e.stopPropagation()}>
-            <button className="lb-close" onClick={closeLightbox}>✕</button>
-            <button className="lb-prev" onClick={prevScreenshot}>‹</button>
-
-            <div className="lb-image-wrap">
-              <img
-                src={process.env.PUBLIC_URL + activeProject.screenshots[lightboxIndex]}
-                alt=""
-              />
-              <div className="lb-counter">
-                {lightboxIndex + 1} / {activeProject.screenshots.length}
-              </div>
-            </div>
-
-            <button className="lb-next" onClick={nextScreenshot}>›</button>
+      {lightbox.open && (
+        <div className="lb-overlay" role="dialog" aria-modal="true" onClick={() => setLightbox({ open:false, idx:0 })}>
+          <div className="lb-inner" onClick={(e)=>e.stopPropagation()}>
+            <button className="lb-close" onClick={() => setLightbox({ open:false, idx:0 })}>✕</button>
+            <button className="lb-nav" onClick={(e)=>{ e.stopPropagation(); setLightbox(s=>({...s, idx: (s.idx -1 + active.screenshots.length) % active.screenshots.length }))}}>‹</button>
+            <img src={process.env.PUBLIC_URL + active.screenshots[lightbox.idx]} alt="" />
+            <button className="lb-nav" onClick={(e)=>{ e.stopPropagation(); setLightbox(s=>({...s, idx: (s.idx +1) % active.screenshots.length }))}}>›</button>
+            <div className="lb-count">{lightbox.idx +1} / {active.screenshots.length}</div>
           </div>
         </div>
       )}
-    </main>
+    </motion.main>
   );
 }

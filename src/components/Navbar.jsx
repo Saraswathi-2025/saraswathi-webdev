@@ -1,20 +1,21 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import "./Navbar.css";
 
-function Navbar() {
+export default function Navbar() {
+  const loc = useLocation();
   return (
-    <nav className="navbar">
-      <div className="nav-logo">Saraswathi</div>
+    <header className="nav-wrap">
+      <div className="container nav-inner">
+        <Link className="brand" to="/">Saraswathi</Link>
 
-      <ul className="nav-links">
-        <li><Link to="/">Home</Link></li>
-        <li><Link to="/projects">Projects</Link></li>
-        <li><Link to="/skills">Skills</Link></li>
-        <li><Link to="/contact">Contact</Link></li>
-      </ul>
-    </nav>
+        <nav className="nav-links" aria-label="Primary">
+          <Link className={loc.pathname === "/" ? "active" : ""} to="/">Home</Link>
+          <Link className={loc.pathname === "/projects" ? "active" : ""} to="/projects">Projects</Link>
+          <Link className={loc.pathname === "/skills" ? "active" : ""} to="/skills">Skills</Link>
+          <Link className={loc.pathname === "/contact" ? "active" : ""} to="/contact">Contact</Link>
+        </nav>
+      </div>
+    </header>
   );
 }
-
-export default Navbar;
