@@ -117,7 +117,7 @@ export default function Resume() {
         <div className="resume-download">
           <a
   className="primary-btn"
-  href="/Saraswathi_ATS.pdf"
+  href="/saraswathi-webdev/Saraswathi_ATS.pdf"
   download="Saraswathi_ATS.pdf"
 >
   ⬇ Download Resume (PDF)
