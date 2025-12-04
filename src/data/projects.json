@@ -1,19 +1,50 @@
 {
   "projects": [
     {
+      "id": "react-portfolio",
       "title": "Portfolio Website",
-      "description": "A modern React portfolio website showcasing my skills.",
-      "link": "https://saraswathi-2025.github.io/MyPortfolio/"
+      "subtitle": "React • CSS • JavaScript",
+      "category": "React",
+      "description": "A modern React portfolio website showcasing my skills and projects.",
+      "github": "https://saraswathi-2025.github.io/MyPortfolio/",
+      "screenshots": [
+        "/screenshots/portfolio-1.png",
+        "/screenshots/portfolio-2.png",
+        "/screenshots/portfolio-3.png",
+        "/screenshots/portfolio-4.png"
+      ]
     },
+
     {
+      "id": "music-player",
       "title": "Music Player",
-      "description": "A simple custom music player using JavaScript.",
-      "link": "https://saraswathi-2025.github.io/Music-Player/"
+      "subtitle": "HTML • CSS • JavaScript",
+      "category": "JavaScript",
+      "description": "A simple custom music player built using JavaScript.",
+      "github": "https://saraswathi-2025.github.io/Music-Player/",
+      "screenshots": [
+        "/screenshots/music-player-1.png",
+        "/screenshots/music-player-2.png",
+        "/screenshots/music-player-3.png",
+        "/screenshots/music-player-4.png",
+        "/screenshots/music-player-5.png"
+      ]
     },
+
     {
+      "id": "student-system",
       "title": "Student Registration System",
+      "subtitle": "HTML • CSS • JavaScript",
+      "category": "JavaScript",
       "description": "A student data entry system built using HTML, CSS, and JS.",
-      "link": "https://saraswathi-2025.github.io/SMCEC/"
+      "github": "https://saraswathi-2025.github.io/SMCEC/",
+      "screenshots": [
+        "/screenshots/smcec-1.png",
+        "/screenshots/smcec-2.png",
+        "/screenshots/smcec-3.png",
+        "/screenshots/smcec-4.png",
+        "/screenshots/smcec-5.png"
+      ]
     }
   ]
 }
