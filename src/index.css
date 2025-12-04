@@ -2,37 +2,28 @@
    GLOBAL THEME VARIABLES
 ========================================= */
 :root {
-  /* Core Colors */
   --bg: #0c0c16;
   --bg-light: #141428;
   --card: rgba(255, 255, 255, 0.05);
 
-  /* Text Colors */
   --text: #ffffff;
   --muted: rgba(255, 255, 255, 0.65);
-  --muted-2: rgba(255, 255, 255, 0.78);
+  --muted-2: rgba(255, 255, 255, 0.80);
 
-  /* Neon Accents */
   --accent-1: #6b5cff;
   --accent-2: #7df0d9;
-
-  /* Gradient Accent */
   --accent-grad: linear-gradient(90deg, var(--accent-1), var(--accent-2));
 
-  /* Shadows */
   --shadow-1: 0 6px 18px rgba(0, 0, 0, 0.35);
   --shadow-2: 0 12px 26px rgba(0, 0, 0, 0.4);
   --glow: 0 0 16px rgba(125, 240, 217, 0.35);
 
-  /* Radius */
   --radius: 14px;
-
-  /* Smooth Animations */
   --smooth: 0.25s ease;
 }
 
 /* =========================================
-   GLOBAL RESET
+   RESET
 ========================================= */
 * {
   margin: 0;
@@ -41,7 +32,7 @@
 }
 
 /* =========================================
-   BODY STYLE
+   BODY
 ========================================= */
 body {
   background: linear-gradient(135deg, #0a0a0a, #1a002b);
@@ -49,10 +40,11 @@ body {
   font-family: Inter, system-ui, sans-serif;
   line-height: 1.4;
   overflow-x: hidden;
+  padding-top: 80px; /* 🔥 FIXED: Prevent navbar overlap */
 }
 
 /* =========================================
-   GLOBAL CONTAINER
+   CONTAINER
 ========================================= */
 .container {
   width: 100%;
@@ -62,40 +54,42 @@ body {
 }
 
 /* =========================================
-   GLOBAL CARD STYLE
-   (Used across Resume, Skills, Projects, Admin)
+   CARD
 ========================================= */
 .card {
   background: var(--card);
   border-radius: var(--radius);
   backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
   border: 1px solid rgba(255, 255, 255, 0.07);
   box-shadow: var(--shadow-1);
 }
 
 /* =========================================
-   GLOBAL HEADINGS
+   HEADINGS
 ========================================= */
-.h2, .section-title {
+.section-title {
   font-size: 32px;
   font-weight: 700;
   background: var(--accent-grad);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+  margin-bottom: 8px;
+  text-align: center;
 }
 
-/* Subtext */
-.lead, .section-sub {
-  color: var(--muted);
+.section-sub {
   font-size: 15px;
-  margin-top: 6px;
+  color: var(--muted);
+  margin-bottom: 20px;
+  text-align: center;
 }
 
 /* =========================================
-   GLOBAL BUTTONS
+   BUTTONS
 ========================================= */
-.btn, .primary-btn, .outline-btn {
+.btn,
+.primary-btn,
+.outline-btn {
   padding: 12px 20px;
   border-radius: 12px;
   font-weight: 600;
@@ -129,47 +123,37 @@ body {
   transform: translateY(-4px);
 }
 
-/* Universal fade animation */
+/* =========================================
+   ANIMATIONS
+========================================= */
 .fade {
-  animation: fadeIn 0.6s ease-out;
+  animation: fadein 0.6s ease-out;
 }
 
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(8px); }
+@keyframes fadein {
+  from { opacity: 0; transform: translateY(10px); }
   to   { opacity: 1; transform: translateY(0); }
 }
+
 /* =========================================
-   LIGHT MODE THEME
+   LIGHT MODE
 ========================================= */
 body.light-mode {
   --bg: #f6f6ff;
   --bg-light: #ffffff;
   --text: #181818;
-  --muted: rgba(0,0,0,0.55);
-  --muted-2: rgba(0,0,0,0.75);
+  --muted: rgba(0, 0, 0, 0.55);
+  --muted-2: rgba(0, 0, 0, 0.75);
 
-  background: linear-gradient(135deg, #e9e9ff, #ffffff);
+  background: linear-gradient(135deg, #ececff, #ffffff);
 }
 
-/* Cards in light mode */
-body.light-mode .card,
-body.light-mode .contact-card,
-body.light-mode .admin-card {
-  background: rgba(0,0,0,0.04);
-  border-color: rgba(0,0,0,0.09);
-  backdrop-filter: blur(12px);
+body.light-mode .card {
+  background: rgba(0, 0, 0, 0.05);
+  border-color: rgba(0,0,0,0.15);
 }
 
-/* Text inside cards */
 body.light-mode p,
-body.light-mode li,
-body.light-mode span {
+body.light-mode li {
   color: var(--muted-2);
-}
-
-/* Neon text still works */
-body.light-mode .section-title,
-body.light-mode .h2 {
-  background: var(--accent-grad);
-  -webkit-background-clip: text;
 }

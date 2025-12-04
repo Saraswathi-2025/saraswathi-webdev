@@ -19,30 +19,27 @@ export default function Contact() {
 
         {/* Buttons */}
         <div className="contact-actions">
-          <a
-            className="contact-btn primary-btn"
-            href="mailto:saraswathiachari02@gmail.com"
-          >
-            📧 Email
-          </a>
+          <a className="contact-btn primary-btn" href="mailto:saraswathiachari02@gmail.com">
+  📧 Email
+</a>
 
           <a
-            className="contact-btn outline-btn"
-            href="https://github.com/Saraswathi-2025"
-            target="_blank"
-            rel="noreferrer"
-          >
-            🐙 GitHub
-          </a>
+  className="contact-btn outline-btn"
+  href="https://github.com/Saraswathi-2025"
+  target="_blank"
+  rel="noreferrer"
+>
+  🐙 GitHub
+</a>
 
           <a
-            className="contact-btn outline-btn"
-            href="https://www.linkedin.com/in/saraswathi-achari-89b2a4304"
-            target="_blank"
-            rel="noreferrer"
-          >
-            🔗 LinkedIn
-          </a>
+  className="contact-btn outline-btn"
+  href="https://www.linkedin.com/in/saraswathi-achari-89b2a4304"
+  target="_blank"
+  rel="noreferrer"
+>
+  🔗 LinkedIn
+</a>
         </div>
       </div>
     </motion.section>
