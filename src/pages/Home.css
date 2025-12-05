@@ -1,4 +1,5 @@
 :root {
+  --accent-grad: linear-gradient(90deg, #9d5cff, #4af2ff);
   --muted-2: rgba(255, 255, 255, 0.85);
   --accent-2: #7df0d9;
 }
@@ -263,6 +264,22 @@
 .testimonial-text, .testimonial-author {
   color: white !important;
 }
+
+/* FIX TESTIMONIAL TEXT OVERLAY ISSUE */
 .testimonial-card {
-  border: 2px solid red !important;
+  position: relative;
+}
+
+.testimonial-card::before {
+  z-index: 0;
+}
+
+.testimonial-card * {
+  position: relative;
+  z-index: 1;
+  color: white !important;
+}
+
+.testimonial-author {
+  color: #7df0d9 !important;
 }
