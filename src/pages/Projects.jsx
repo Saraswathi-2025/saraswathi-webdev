@@ -2,6 +2,7 @@
 import React, { useEffect, useState, useCallback } from "react";
 import { motion } from "framer-motion";
 import "./Projects.css";
+import projectData from "../data/projects.json";
 
 /* Thumbnail Component */
 function Thumb({ src, alt, onClick }) {
@@ -18,76 +19,57 @@ export default function Projects() {
   const [filter, setFilter] = useState("All");
   const [lightbox, setLightbox] = useState({ open: false, idx: 0 });
 
-  /* Available Categories — adjust to match your projects.json categories */
+  /* Categories */
   const categories = ["All", "React", "JavaScript", "HTML/CSS"];
 
-  /* Load Project Data */
+  /* Load Project Data (Static import — no fetch) */
   useEffect(() => {
-    let mounted = true;
-    async function load() {
-      try {
-        const res = await fetch(process.env.PUBLIC_URL + "public/data/projects.json");
-        const base = await res.json();
-        const extra = JSON.parse(localStorage.getItem("extraProjects")) || [];
-        const all = [...(base.projects || []), ...extra];
-
-        if (mounted) setProjects(all);
-      } catch (err) {
-        console.error("Failed to load projects", err);
-        if (mounted) setProjects([]);
-      }
-    }
-    load();
-    return () => { mounted = false; };
+    setProjects(projectData.projects || []);
   }, []);
 
   /* Filter Projects */
   const filteredProjects =
     filter === "All"
       ? projects
-      : projects.filter((p) => (p.category || "").toLowerCase() === filter.toLowerCase());
+      : projects.filter(
+          (p) => (p.category || "").toLowerCase() === filter.toLowerCase()
+        );
 
-  /* Keep activeIdx valid when filter or projects change */
+  /* Keep activeIdx valid */
   useEffect(() => {
     if (activeIdx >= filteredProjects.length) {
       setActiveIdx(0);
     }
-    // if there are no filtered projects, ensure activeIdx is 0
-    if (filteredProjects.length === 0 && activeIdx !== 0) {
-      setActiveIdx(0);
-    }
-    // keep activeIdx at 0 whenever filter changes (useful UX)
-    // note: this is already set in filter button click, but this makes sure it's consistent
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [filter, projects.length, filteredProjects.length]);
+  }, [filter, filteredProjects.length, activeIdx]);
 
-  /* Safe active project object to avoid runtime errors */
-  const active = filteredProjects[activeIdx] || filteredProjects[0] || {
-    id: "--",
-    title: "No projects",
-    subtitle: "",
-    description: "No projects found for this category.",
-    github: "#",
-    screenshots: [],
-  };
+  /* Safe active object */
+  const active =
+    filteredProjects[activeIdx] || {
+      id: "--",
+      title: "No projects",
+      subtitle: "",
+      description: "No projects found for this category.",
+      github: "#",
+      screenshots: [],
+    };
 
-  /* Lightbox keyboard navigation (Esc, left, right) */
+  /* Lightbox keyboard control */
   const onKey = useCallback(
     (e) => {
       if (!lightbox.open) return;
+
       if (e.key === "Escape") {
         setLightbox({ open: false, idx: 0 });
       } else if (e.key === "ArrowLeft") {
         setLightbox((s) => ({
           ...s,
           idx:
-            (s.idx - 1 + Math.max(1, active.screenshots.length)) %
-            Math.max(1, active.screenshots.length),
+            (s.idx - 1 + active.screenshots.length) % active.screenshots.length,
         }));
       } else if (e.key === "ArrowRight") {
         setLightbox((s) => ({
           ...s,
-          idx: (s.idx + 1) % Math.max(1, active.screenshots.length),
+          idx: (s.idx + 1) % active.screenshots.length,
         }));
       }
     },
@@ -99,13 +81,14 @@ export default function Projects() {
     return () => window.removeEventListener("keydown", onKey);
   }, [onKey]);
 
-  /* If loading */
-  if (!projects.length)
+  /* Loading UI (very quick now) */
+  if (!projects.length) {
     return (
       <div className="projects container">
         <p className="loading-text">Loading projects…</p>
       </div>
     );
+  }
 
   return (
     <motion.main
@@ -117,7 +100,9 @@ export default function Projects() {
       {/* HEADER */}
       <header className="projects-head">
         <h2 className="section-title">Projects</h2>
-        <p className="section-sub">Select a project to view details and screenshots.</p>
+        <p className="section-sub">
+          Select a project to view details and screenshots.
+        </p>
       </header>
 
       {/* FILTER BAR */}
@@ -128,7 +113,7 @@ export default function Projects() {
             className={`filter-btn ${filter === c ? "active" : ""}`}
             onClick={() => {
               setFilter(c);
-              setActiveIdx(0); // reset index for new category
+              setActiveIdx(0);
             }}
           >
             {c}
@@ -159,22 +144,20 @@ export default function Projects() {
               </button>
             ))
           ) : (
-            <div className="empty-list">No projects found in this category.</div>
+            <div className="empty-list">No projects found.</div>
           )}
         </motion.aside>
 
         {/* RIGHT DETAILS */}
         <section className="proj-detail card">
-          {/* Main Preview */}
           <div
             className="proj-preview"
             role="button"
             tabIndex={0}
-            onClick={() => (active.screenshots.length ? setLightbox({ open: true, idx: 0 }) : null)}
-            onKeyDown={(e) => {
-              if (e.key === "Enter" && active.screenshots.length) setLightbox({ open: true, idx: 0 });
-            }}
-            aria-label={active.screenshots.length ? "Open gallery" : "No screenshots available"}
+            onClick={() =>
+              active.screenshots.length &&
+              setLightbox({ open: true, idx: 0 })
+            }
           >
             {active.screenshots.length ? (
               <img
@@ -183,7 +166,7 @@ export default function Projects() {
                 loading="lazy"
               />
             ) : (
-              <div className="preview-empty">No preview available</div>
+              <div className="preview-empty">No preview</div>
             )}
           </div>
 
@@ -193,17 +176,23 @@ export default function Projects() {
             <p className="proj-sub-title">{active.subtitle}</p>
             <p className="proj-desc">{active.description}</p>
 
-            {/* ACTIONS */}
             <div className="proj-actions">
-              <a className="btn btn-primary" href={active.github || "#"} target="_blank" rel="noreferrer">
+              <a
+                className="btn btn-primary"
+                href={active.github}
+                target="_blank"
+                rel="noreferrer"
+              >
                 View on GitHub →
               </a>
 
               <button
                 className="btn btn-outline"
-                onClick={() => active.screenshots.length && setLightbox({ open: true, idx: 0 })}
+                onClick={() =>
+                  active.screenshots.length &&
+                  setLightbox({ open: true, idx: 0 })
+                }
                 disabled={!active.screenshots.length}
-                aria-disabled={!active.screenshots.length}
               >
                 View Screenshots
               </button>
@@ -237,7 +226,10 @@ export default function Projects() {
           onClick={() => setLightbox({ open: false, idx: 0 })}
         >
           <div className="lb-inner" onClick={(e) => e.stopPropagation()}>
-            <button className="lb-close" onClick={() => setLightbox({ open: false, idx: 0 })} aria-label="Close gallery">
+            <button
+              className="lb-close"
+              onClick={() => setLightbox({ open: false, idx: 0 })}
+            >
               ✕
             </button>
 
@@ -246,22 +238,32 @@ export default function Projects() {
               onClick={() =>
                 setLightbox((s) => ({
                   ...s,
-                  idx: (s.idx - 1 + active.screenshots.length) % active.screenshots.length,
+                  idx:
+                    (s.idx - 1 + active.screenshots.length) %
+                    active.screenshots.length,
                 }))
               }
-              aria-label="Previous image"
             >
               ‹
             </button>
 
-            <img className="lb-image" src={process.env.PUBLIC_URL + active.screenshots[lightbox.idx]} alt="" />
+            <img
+              className="lb-image"
+              src={
+                process.env.PUBLIC_URL +
+                active.screenshots[lightbox.idx]
+              }
+              alt=""
+            />
 
             <button
               className="lb-nav right"
               onClick={() =>
-                setLightbox((s) => ({ ...s, idx: (s.idx + 1) % active.screenshots.length }))
+                setLightbox((s) => ({
+                  ...s,
+                  idx: (s.idx + 1) % active.screenshots.length,
+                }))
               }
-              aria-label="Next image"
             >
               ›
             </button>

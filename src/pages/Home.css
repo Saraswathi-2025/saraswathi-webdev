@@ -1,3 +1,7 @@
+:root {
+  --muted-2: rgba(255, 255, 255, 0.85);
+  --accent-2: #7df0d9;
+}
 /* =========================================
    HOME PAGE BASE LAYOUT — FIXED
 ========================================= */
@@ -255,4 +259,10 @@
   .profile-card { width: 200px; height: 200px; }
   .home-title { font-size: 34px; }
   .home-buttons { flex-direction: column; width: 100%; }
+}
+.testimonial-text, .testimonial-author {
+  color: white !important;
+}
+.testimonial-card {
+  border: 2px solid red !important;
 }
