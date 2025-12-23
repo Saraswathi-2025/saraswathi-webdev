@@ -8,14 +8,14 @@
 
   --text: #ffffff;
   --muted: rgba(255, 255, 255, 0.65);
-  --muted-2: rgba(255, 255, 255, 0.80);
+  --muted-2: rgba(255, 255, 255, 0.8);
 
   --accent-1: #6b5cff;
   --accent-2: #7df0d9;
   --accent-grad: linear-gradient(90deg, var(--accent-1), var(--accent-2));
 
   --shadow-1: 0 6px 18px rgba(0, 0, 0, 0.35);
-  --shadow-2: 0 12px 26px rgba(0, 0, 0, 0.4);
+  --shadow-2: 0 12px 26px rgba(0, 0, 0, 0.45);
   --glow: 0 0 16px rgba(125, 240, 217, 0.35);
 
   --radius: 14px;
@@ -32,15 +32,37 @@
 }
 
 /* =========================================
-   BODY
+   ROOT LAYOUT (STICKY FOOTER – CORRECT)
+========================================= */
+html,
+body {
+  height: 100%;
+}
+
+#root {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* =========================================
+   BODY (NAVBAR SPACING BELONGS HERE)
 ========================================= */
 body {
+  padding-top: 80px; /* navbar height */
   background: linear-gradient(135deg, #0a0a0a, #1a002b);
   color: var(--text);
-  font-family: Inter, system-ui, sans-serif;
-  line-height: 1.4;
+  font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  line-height: 1.5;
   overflow-x: hidden;
-  padding-top: 80px; /* 🔥 FIXED: Prevent navbar overlap */
+}
+
+/* =========================================
+   MAIN CONTENT (PUSH FOOTER DOWN)
+========================================= */
+.app-main {
+  flex: 1;
+  display: block;
 }
 
 /* =========================================
@@ -60,6 +82,7 @@ body {
   background: var(--card);
   border-radius: var(--radius);
   backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
   border: 1px solid rgba(255, 255, 255, 0.07);
   box-shadow: var(--shadow-1);
 }
@@ -73,24 +96,23 @@ body {
   background: var(--accent-grad);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  margin-bottom: 8px;
+  margin-bottom: 10px;
   text-align: center;
 }
 
 .section-sub {
   font-size: 15px;
   color: var(--muted);
-  margin-bottom: 20px;
+  margin-bottom: 22px;
   text-align: center;
 }
 
 /* =========================================
    BUTTONS
 ========================================= */
-.btn,
 .primary-btn,
 .outline-btn {
-  padding: 12px 20px;
+  padding: 12px 22px;
   border-radius: 12px;
   font-weight: 600;
   font-size: 15px;
@@ -108,31 +130,37 @@ body {
 }
 
 .primary-btn:hover {
-  transform: translateY(-4px);
+  transform: translateY(-3px);
   box-shadow: var(--shadow-2), var(--glow);
 }
 
 .outline-btn {
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(125, 240, 217, 0.4);
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(125, 240, 217, 0.45);
   color: var(--accent-2);
 }
 
 .outline-btn:hover {
-  background: rgba(125, 240, 217, 0.15);
-  transform: translateY(-4px);
+  background: rgba(125, 240, 217, 0.18);
+  transform: translateY(-3px);
 }
 
 /* =========================================
    ANIMATIONS
 ========================================= */
 .fade {
-  animation: fadein 0.6s ease-out;
+  animation: fadeIn 0.6s ease-out;
 }
 
-@keyframes fadein {
-  from { opacity: 0; transform: translateY(10px); }
-  to   { opacity: 1; transform: translateY(0); }
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 /* =========================================
@@ -144,16 +172,32 @@ body.light-mode {
   --text: #181818;
   --muted: rgba(0, 0, 0, 0.55);
   --muted-2: rgba(0, 0, 0, 0.75);
-
   background: linear-gradient(135deg, #ececff, #ffffff);
 }
 
 body.light-mode .card {
   background: rgba(0, 0, 0, 0.05);
-  border-color: rgba(0,0,0,0.15);
+  border-color: rgba(0, 0, 0, 0.15);
 }
 
 body.light-mode p,
 body.light-mode li {
   color: var(--muted-2);
+}
+
+/* =========================================
+   RESPONSIVE
+========================================= */
+@media (max-width: 600px) {
+  body {
+    padding-top: 72px;
+  }
+
+  .section-title {
+    font-size: 26px;
+  }
+
+  .container {
+    padding: 0 16px;
+  }
 }

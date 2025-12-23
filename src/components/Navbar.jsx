@@ -1,18 +1,21 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { NavLink } from "react-router-dom";
 import "./Navbar.css";
 
 export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
+  const [lightMode, setLightMode] = useState(false);
 
-  /* Toggle Theme */
-  const toggleTheme = () => {
-    document.body.classList.toggle("light-mode");
-  };
+  useEffect(() => {
+    if (lightMode) {
+      document.body.classList.add("light-mode");
+    } else {
+      document.body.classList.remove("light-mode");
+    }
+  }, [lightMode]);
 
   return (
     <nav className="navbar">
-
       {/* LOGO */}
       <div className="nav-logo">Saraswathi</div>
 
@@ -26,7 +29,11 @@ export default function Navbar() {
       </div>
 
       {/* THEME TOGGLE */}
-      <div className="theme-toggle" onClick={toggleTheme}>
+      <div
+        className="theme-toggle"
+        onClick={() => setLightMode(!lightMode)}
+        title="Toggle theme"
+      >
         <div className="toggle-circle"></div>
       </div>
 
@@ -41,7 +48,7 @@ export default function Navbar() {
         <span></span>
       </button>
 
-      {/* MOBILE DROPDOWN MENU */}
+      {/* MOBILE MENU */}
       <div className={`mobile-menu ${menuOpen ? "show" : ""}`}>
         <NavLink to="/" end onClick={() => setMenuOpen(false)}>Home</NavLink>
         <NavLink to="/projects" onClick={() => setMenuOpen(false)}>Projects</NavLink>
@@ -49,7 +56,6 @@ export default function Navbar() {
         <NavLink to="/resume" onClick={() => setMenuOpen(false)}>Resume</NavLink>
         <NavLink to="/contact" onClick={() => setMenuOpen(false)}>Contact</NavLink>
       </div>
-
     </nav>
   );
 }

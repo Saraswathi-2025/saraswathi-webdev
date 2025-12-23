@@ -1,150 +1,112 @@
 /* =========================================
-   PAGE SPACING
+   SKILLS PAGE
 ========================================= */
+
 .skills {
-  padding: 120px 0 60px;
-  text-align: center;
+  padding: 130px 0 60px;
   position: relative;
   z-index: 2;
 }
 
-/* Header */
+/* -----------------------------------------
+   HEADER
+----------------------------------------- */
 .skills-head {
-  margin-bottom: 30px;
+  text-align: center;
+  margin-bottom: 36px;
 }
 
-.section-title {
-  font-size: 34px;
-  font-weight: 700;
-  background: var(--accent-grad);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
+/* section-title & section-sub from global */
 
-.section-sub {
-  font-size: 15px;
-  color: var(--muted);
-  margin-top: 6px;
-}
-
-/* =========================================
-   GRID LAYOUT
-========================================= */
+/* -----------------------------------------
+   GRID
+----------------------------------------- */
 .skills-grid {
-  margin-top: 34px;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 22px;
+  gap: 26px;
 }
 
-/* =========================================
-   SKILL CARD — Neon Glass Effect
-========================================= */
+/* -----------------------------------------
+   SKILL CARD (CLEAN GLASS)
+----------------------------------------- */
 .skill-card {
-  padding: 26px;
+  padding: 26px 22px;
   border-radius: 18px;
 
-  background: rgba(255, 255, 255, 0.06);
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(12px);
 
   border: 1px solid rgba(255, 255, 255, 0.08);
   box-shadow: 0 10px 26px rgba(0, 0, 0, 0.35);
 
-  position: relative;
-  overflow: hidden;
-
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
 
-/* Animated Neon Border */
-.skill-card::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  border-radius: 18px;
-  padding: 2px;
-
-  background: var(--accent-grad);
-  -webkit-mask:
-    linear-gradient(#fff 0 0) content-box,
-    linear-gradient(#fff 0 0);
-  -webkit-mask-composite: xor;
-          mask-composite: exclude;
-
-  animation: neonFlow 4s linear infinite;
-}
-
-@keyframes neonFlow {
-  0% { filter: hue-rotate(0deg); }
-  100% { filter: hue-rotate(360deg); }
-}
-
-/* Hover Effect */
 .skill-card:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 14px 34px rgba(0, 255, 200, 0.25);
+  transform: translateY(-6px);
+  box-shadow: 0 14px 32px rgba(0, 255, 200, 0.22);
 }
 
-/* =========================================
-   TITLES
-========================================= */
+/* -----------------------------------------
+   TITLE
+----------------------------------------- */
 .skill-title {
-  font-size: 18px;
+  font-size: 19px;
   font-weight: 700;
+  margin-bottom: 14px;
 
   background: var(--accent-grad);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-
-  margin-bottom: 14px;
 }
 
-/* =========================================
-   LIST ITEMS
-========================================= */
+/* -----------------------------------------
+   LIST
+----------------------------------------- */
 .skill-list {
+  list-style: none;
   padding: 0;
   margin: 0;
-  list-style: none;
 }
 
 .skill-item {
-  margin: 8px 0;
   font-size: 15px;
+  padding: 9px 0;
   color: var(--muted-2);
-  transition: 0.25s ease;
+
+  display: flex;
+  align-items: center;
+  gap: 10px;
 }
 
-/* micro hover animation */
-.skill-item:hover {
-  color: white;
-  transform: translateX(6px);
+/* bullet dot */
+.skill-item::before {
+  content: "•";
+  color: #7df0d9;
+  font-size: 18px;
+  line-height: 1;
 }
 
-/* =========================================
-   RESPONSIVE DESIGN
-========================================= */
-@media (max-width: 900px) {
+/* -----------------------------------------
+   RESPONSIVE
+----------------------------------------- */
+@media (max-width: 1000px) {
+  .skills-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .skills {
+    padding-top: 120px;
+  }
+
   .skills-grid {
     grid-template-columns: 1fr;
   }
 
   .skill-card {
-    padding: 24px;
-  }
-}
-
-@media (max-width: 600px) {
-  .skills-head {
-    margin-bottom: 20px;
-  }
-
-  .section-title {
-    font-size: 28px;
-  }
-
-  .skill-card {
-    padding: 20px;
+    padding: 22px 18px;
   }
 }

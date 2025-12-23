@@ -18,7 +18,7 @@
 }
 
 /* =========================================
-   FILTER BAR (CLEAN VERSION)
+   FILTER BAR
 ========================================= */
 .filter-bar {
   display: flex;
@@ -33,13 +33,13 @@
   font-size: 14px;
   cursor: pointer;
   color: var(--muted);
-  background: rgba(255,255,255,0.04);
-  border: 1px solid rgba(255,255,255,0.06);
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.06);
   transition: 0.25s ease;
 }
 
 .filter-btn:hover {
-  background: rgba(255,255,255,0.12);
+  background: rgba(255, 255, 255, 0.12);
   transform: translateY(-2px);
 }
 
@@ -54,30 +54,27 @@
 ========================================= */
 .projects-grid {
   display: grid;
-  grid-template-columns: 260px 1fr;
+  grid-template-columns: 220px 1fr;
   gap: 24px;
   align-items: start;
   margin-top: 20px;
 }
 
 /* =========================================
-   PROJECT LIST (LEFT)
+   PROJECT LIST
 ========================================= */
 .projects-list {
   display: flex;
   flex-direction: column;
   gap: 12px;
-  padding: 14px;
-
-  background: rgba(255, 255, 255, 0.04);
-  backdrop-filter: blur(10px);
-  border-radius: 14px;
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  padding: 0;
+  background: transparent;
+  border: none;
 }
 
 .proj-item {
-  background: rgba(255,255,255,0.03);
-  border: 1px solid rgba(255,255,255,0.05);
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.05);
   padding: 14px;
   border-radius: 12px;
   text-align: left;
@@ -87,7 +84,7 @@
 }
 
 .proj-item:hover {
-  background: rgba(255,255,255,0.10);
+  background: rgba(255, 255, 255, 0.1);
   transform: translateY(-2px);
 }
 
@@ -108,29 +105,28 @@
 }
 
 /* =========================================
-   PROJECT DETAILS (RIGHT)
+   PROJECT DETAILS
 ========================================= */
 .proj-detail {
   display: grid;
   grid-template-columns: 1fr 360px;
   gap: 18px;
   padding: 20px;
-
-  background: rgba(255,255,255,0.04);
+  background: rgba(255, 255, 255, 0.04);
   border-radius: 16px;
-  border: 1px solid rgba(255,255,255,0.08);
+  border: 1px solid rgba(255, 255, 255, 0.08);
   backdrop-filter: blur(10px);
 }
 
-/* Main preview image */
+/* PREVIEW */
 .proj-preview img {
   width: 100%;
   height: 320px;
   object-fit: contain;
   border-radius: 12px;
   padding: 6px;
-  background: rgba(255,255,255,0.04);
-  border: 1px solid rgba(255,255,255,0.06);
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.06);
 }
 
 .preview-empty {
@@ -140,7 +136,7 @@
   display: grid;
   place-items: center;
   color: var(--muted);
-  background: rgba(255,255,255,0.03);
+  background: rgba(255, 255, 255, 0.03);
 }
 
 /* =========================================
@@ -182,7 +178,6 @@
   text-decoration: none;
 }
 
-/* Primary button */
 .btn-primary {
   background: var(--accent-grad);
   color: #000;
@@ -190,25 +185,18 @@
 
 .btn-primary:hover {
   transform: translateY(-4px);
-  box-shadow: 0px 6px 20px rgba(0, 255, 200, 0.35);
+  box-shadow: 0 6px 20px rgba(0, 255, 200, 0.35);
 }
 
-/* Outline */
 .btn-outline {
-  border: 1px solid rgba(125,240,217,0.4);
+  border: 1px solid rgba(125, 240, 217, 0.4);
   color: #7df0d9;
-  background: rgba(255,255,255,0.03);
+  background: rgba(255, 255, 255, 0.03);
 }
 
 .btn-outline:hover {
-  background: rgba(125,240,217,0.12);
+  background: rgba(125, 240, 217, 0.12);
   transform: translateY(-4px);
-}
-
-button:disabled,
-button[aria-disabled="true"] {
-  opacity: 0.45;
-  cursor: not-allowed;
 }
 
 /* =========================================
@@ -227,15 +215,15 @@ button[aria-disabled="true"] {
   height: 56px;
   border-radius: 10px;
   overflow: hidden;
-  background: rgba(255,255,255,0.05);
-  border: 1px solid rgba(255,255,255,0.07);
-  transition: 0.23s ease;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.07);
   cursor: pointer;
+  transition: 0.23s ease;
 }
 
 .thumb:hover {
   transform: translateY(-3px);
-  background: rgba(255,255,255,0.1);
+  background: rgba(255, 255, 255, 0.1);
 }
 
 .thumb img {
@@ -244,18 +232,13 @@ button[aria-disabled="true"] {
   object-fit: cover;
 }
 
-.thumb-empty {
-  padding: 20px;
-  color: var(--muted);
-}
-
 /* =========================================
-   LIGHTBOX
+   LIGHTBOX (FIXED CENTER + EQUAL ARROWS)
 ========================================= */
 .lb-overlay {
   position: fixed;
   inset: 0;
-  background: rgba(0,0,0,0.85);
+  background: rgba(0, 0, 0, 0.85);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -264,62 +247,72 @@ button[aria-disabled="true"] {
 
 .lb-inner {
   position: relative;
-  max-width: 1100px;
   width: 92%;
-  padding: 22px;
-  display: flex;
-  align-items: center;
-  gap: 16px;
-
-  background: rgba(20,20,30,0.65);
+  max-width: 1100px;
+  padding: 40px 70px;
+  background: rgba(20, 20, 30, 0.65);
   backdrop-filter: blur(14px);
-  border-radius: 16px;
+  border-radius: 18px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .lb-image {
   max-width: 100%;
   max-height: 78vh;
   object-fit: contain;
+  margin: 0 auto;
 }
 
 .lb-close {
   position: absolute;
-  top: 12px;
-  right: 12px;
-  background: rgba(255,255,255,0.12);
-  border: 0;
-  border-radius: 100%;
+  top: 14px;
+  right: 14px;
+  background: rgba(255, 255, 255, 0.14);
+  border: none;
+  border-radius: 50%;
   padding: 8px 12px;
   color: white;
   cursor: pointer;
 }
 
 .lb-nav {
-  background: rgba(255,255,255,0.12);
-  border: 0;
-  padding: 12px 16px;
-  border-radius: 12px;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(255, 255, 255, 0.14);
+  border: none;
+  padding: 14px 18px;
+  border-radius: 14px;
+  font-size: 22px;
   cursor: pointer;
-  font-size: 20px;
   transition: 0.25s ease;
 }
 
+.lb-nav.left {
+  left: 18px;
+}
+
+.lb-nav.right {
+  right: 18px;
+}
+
 .lb-nav:hover {
-  background: rgba(255,255,255,0.2);
+  background: rgba(255, 255, 255, 0.25);
 }
 
 .lb-count {
   position: absolute;
-  bottom: 10px;
+  bottom: 14px;
   left: 50%;
   transform: translateX(-50%);
   color: var(--muted);
 }
 
 /* =========================================
-   RESPONSIVE DESIGN
+   RESPONSIVE
 ========================================= */
-
 @media (max-width: 900px) {
   .projects-grid {
     grid-template-columns: 1fr;
@@ -344,11 +337,15 @@ button[aria-disabled="true"] {
     text-align: center;
   }
 
-  .projects-list {
-    gap: 10px;
+  .lb-inner {
+    padding: 30px 20px;
   }
 
-  .lb-inner {
-    flex-direction: column;
+  .lb-nav.left {
+    left: 8px;
+  }
+
+  .lb-nav.right {
+    right: 8px;
   }
 }

@@ -3,7 +3,7 @@ import { HashRouter as Router, Routes, Route } from "react-router-dom";
 
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
-import Loader from "./components/Loader";   // <-- ADD THIS
+import Loader from "./components/Loader";
 
 import Home from "./pages/Home";
 import Projects from "./pages/Projects";
@@ -16,7 +16,6 @@ import NotFound from "./pages/NotFound";
 function App() {
   const [loading, setLoading] = useState(true);
 
-  // Loader hides after 1.3 seconds to match animation delay
   useEffect(() => {
     const timer = setTimeout(() => setLoading(false), 1300);
     return () => clearTimeout(timer);
