@@ -75,22 +75,22 @@ git clone https://github.com/saraswathi-2025/saraswathi-webdev.git
 npm install
 3.Start development server
 npm start
----
-## 🚀 Deployment
+
+🚀 Deployment
 This project is deployed using GitHub Pages.
 - npm run build
 - npm run deploy
----
-## 📌 Notes
+
+📌 Notes
 - This is a portfolio project
 - Focused on frontend skills and UI
 - More improvements and polishing planned
 - Backend integration may be added later
----
-## 👩‍💻 Author
+
+👩‍💻 Author
 Saraswathi
 Frontend Developer (Learning Phase)
 Passionate about building real-world web applications
 
-## 📜 License
+📜 License
 This project is for learning and personal portfolio use.
