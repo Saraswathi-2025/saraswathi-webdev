@@ -69,8 +69,6 @@ react config
 ```bash
 git clone https://github.com/saraswathi-2025/saraswathi-webdev.git
 
----
-
 1.Move into the project folder
 - cd saraswathi-webdev
 2.Install dependencies
@@ -78,14 +76,10 @@ npm install
 3.Start development server
 npm start
 
----
-
 🚀 Deployment
 This project is deployed using GitHub Pages.
 - npm run build
 - npm run deploy
-
----
 
 📌 Notes
 - This is a portfolio project
@@ -93,14 +87,10 @@ This project is deployed using GitHub Pages.
 - More improvements and polishing planned
 - Backend integration may be added later
 
----
-
 👩‍💻 Author
 Saraswathi
 Frontend Developer (Learning Phase)
 Passionate about building real-world web applications
-
----
 
 📜 License
 This project is for learning and personal portfolio use.
